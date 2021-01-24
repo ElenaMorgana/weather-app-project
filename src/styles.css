@@ -1,6 +1,6 @@
 .container {
   border: 1px solid grey;
-  padding: 25px;
+  padding: 40px;
   margin: 20px;
   max-width: 800px;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
@@ -14,10 +14,22 @@ submit {
   background-color: #406475;
   color: #fff;
   cursor: pointer;
+  box-shadow: 5px;
+  padding: 5px 3px;
 }
 
 submit:hover {
   transition: all 200ms ease-in-out;
+  background-color: #f0eeee;
+}
+
+#current-location-button {
+  padding: 5px 3px;
+}
+
+.btn:hover {
+  transition: all 200ms ease-in-out;
+  background-color: #f0eeee;
 }
 
 h1 {
