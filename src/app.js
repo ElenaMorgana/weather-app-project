@@ -1,33 +1,33 @@
 
-let now = new Date();
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
 
-let h2 = document.querySelector("h2");
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${formatHours(timestamp)}`;
+}
 
-let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let year = now.getFullYear();
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let day = days[now.getDay()];
-
-let months = [
-  "Jan",
-  "Feb",
-  "March",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec"
-];
-let month = months[now.getMonth()];
-
-h2.innerHTML = `${day} ${month} ${date}, ${hours}:${minutes}, ${year}`;
+  return `${hours}:${minutes}`;
+}
 
 function showFahrenheit(event) {
   event.preventDefault();
@@ -43,6 +43,7 @@ document.querySelector("#temperature").innerHTML = Math.round(response.data.main
 document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
 document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
 document.querySelector("#description").innerHTML = response.data.weather[0].description;
+document.querySelector("#date").innerHTML = formatDate(response.data.dt * 1000); 
 }
 
 let searchForm = document.querySelector("#search-form");
