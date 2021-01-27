@@ -36,8 +36,9 @@ h1 {
   margin-top: 15px;
 }
 
-.updated:firstletter {
-  text-transform: capitalize;
+.updated {
+  font-size: 20px;
+  font-weight: lighter;
 }
 
 #description {
