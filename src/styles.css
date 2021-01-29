@@ -45,13 +45,24 @@ h1 {
   text-transform: capitalize;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 #degrees {
   font-size: 20px;
   position: relative;
   top: -22px;
 }
 
-#fahreheit {
+#degrees .active {
+  color: #406475;
+  cursor: default;
+  text-decoration: none;
+}
+
+#degrees .active:hover {
+  text-decoration: none;
   font-weight: bold;
 }
 
@@ -65,14 +76,6 @@ ul {
   margin-top: 15px;
 }
 
-a {
-  text-decoration: none;
-  color: #406475;
-}
-a:hover {
-  transition: all 200ms ease-in-out;
-  text-decoration: none;
-}
 .temperature {
   font-size: 40px;
 }

@@ -1,4 +1,5 @@
 
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
 
@@ -29,24 +30,6 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-function showFahrenheit(event) {
-  event.preventDefault();
-  let tempFahrenheit = document.querySelector("#temperature");
-  tempFahrenheit.innerHTML = `66`;
-}
-let tempFahrenheit = document.querySelector("#fahrenheit");
-tempFahrenheit.addEventListener("click", showFahrenheit);
-
-function showWeather(response) {
-document.querySelector("#city").innerHTML = response.data.name;
-document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
-document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
-document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-document.querySelector("#description").innerHTML = response.data.weather[0].description;
-document.querySelector("#date").innerHTML = formatDate(response.data.dt * 1000); 
-document.querySelector('#icon').setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`); 
-document.querySelector('#icon').setAttribute("alt", response.data.weather[0].description);
-}
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", showCity);
@@ -78,4 +61,43 @@ function showCity(event) {
   let city = document.querySelector("#city-input").value;
   search(city);
 }
+
+
+function showWeather(response) {
+
+tempCelsius = response.data.main.temp ;
+document.querySelector("#city").innerHTML = response.data.name;
+document.querySelector("#temperature").innerHTML = Math.round(tempCelsius);
+document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
+document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
+document.querySelector("#description").innerHTML = response.data.weather[0].description;
+document.querySelector("#date").innerHTML = formatDate(response.data.dt * 1000); 
+document.querySelector('#icon').setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`); 
+document.querySelector('#icon').setAttribute("alt", response.data.weather[0].description);
+}
+
+function showFahrenheit(event) {
+  event.preventDefault();
+let fahrenheitTemperature = (tempCelsius * 9) / 5 + 32;
+let temperatureElement = document.querySelector("#temperature");
+ temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+tempFahrenheitLink.classList.add("active")
+ tempCelsiusLink.classList.remove("active");
+}
+
+function showCelsius (event) {
+  event.preventDefault();
+ document.querySelector("#temperature").innerHTML = Math.round(tempCelsius);
+ tempFahrenheitLink.classList.remove("active")
+ tempCelsiusLink.classList.add("active");
+}
+  
+  
+let tempCelsius = null;
+
+let tempFahrenheitLink = document.querySelector("#fahrenheit");
+tempFahrenheitLink.addEventListener("click", showFahrenheit);
+
+let tempCelsiusLink = document.querySelector("#celsius");
+tempCelsiusLink.addEventListener("click", showCelsius);
 
