@@ -1,4 +1,4 @@
-.container {
+.weather-app {
   border: 1px solid grey;
   padding: 40px;
   margin: 0 auto;
@@ -78,4 +78,44 @@ ul {
 
 .temperature {
   font-size: 40px;
+}
+
+.weather-forecast h3 {
+  font-size: 22px;
+  text-align: center;
+  height: 15px;
+  line-height: 15px;
+  padding-top: 7px;
+}
+
+.weather-forecast img {
+  display: block;
+  margin: 0 auto;
+  height: 48px;
+  width: 48px;
+}
+
+#forecast {
+  text-align: center;
+}
+#forecast strong {
+  font-weight: bold;
+}
+.weather-forecast-temperature {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.repo {
+  color: #406475;
+  font-family: "Dosis", sans-serif;
+  font-size: 15px;
+  margin-left: 155px;
+  font-weight: bold;
+}
+.repo-link:hover {
+  transition: all 200ms ease-in-out;
+  font-weight: bolder;
 }
