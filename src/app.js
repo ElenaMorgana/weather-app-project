@@ -110,7 +110,7 @@ forecastElement.innerHTML += `
                     <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
                </div>
                 </div>
-                `
+                `;
 }
 
   
@@ -124,7 +124,5 @@ function search(city) {
   apiUrl =  `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
-
-
 
 search("New York");
