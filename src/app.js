@@ -76,17 +76,15 @@ tempCelsiusLink.addEventListener("click", showCelsius);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", showCity);
 
+
+
 function searchLocation(position) {
   let apiKey = '7d51494004d10e147e185b78d055e0e0'; 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(showWeather);
-
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  apiUrl =  `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
-
-
 
 function getCurrentLocation(event){
   event.preventDefault();
