@@ -1,5 +1,4 @@
 
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
 
@@ -82,7 +81,12 @@ function searchLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
+
+
 
 function getCurrentLocation(event){
   event.preventDefault();
@@ -105,7 +109,6 @@ forecastElement.innerHTML += `
                     ${formatHours(forecast.dt * 1000)}
                 </h3>
                 <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" />
-
                  <div class="weather-forecast-temperature">
                     <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
                </div>
@@ -126,3 +129,4 @@ function search(city) {
 }
 
 search("New York");
+
